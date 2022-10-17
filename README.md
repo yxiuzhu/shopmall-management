@@ -97,3 +97,7 @@ Modern browsers and Internet Explorer 10+.
 [MIT](https://github.com/PanJiaChen/vue-admin-template/blob/master/LICENSE) license.
 
 Copyright (c) 2017-present PanJiaChen
+
+## 后台数据接口文档
+http://39.98.123.211:8170/swagger-ui.html#/ 
+http://39.98.123.211:8510/swagger-ui.html
