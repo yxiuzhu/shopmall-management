@@ -38,7 +38,11 @@
             @click="updateTradeMark(row)"
             >修改</el-button
           >
-          <el-button type="danger" icon="el-icon-delete" size="mini" @click="deleteTradeMark(row)"
+          <el-button
+            type="danger"
+            icon="el-icon-delete"
+            size="mini"
+            @click="deleteTradeMark(row)"
             >删除</el-button
           >
         </template>
@@ -210,7 +214,7 @@ export default {
       // 收集品牌图片数据，因为将来需要带给服务器
       this.tmForm.logoUrl = res.data
     },
-    //图片上传之前
+    // 图片上传之前
     beforeAvatarUpload(file) {
       const isJPG = file.type === 'image/jpeg'
       const isLt2M = file.size / 1024 / 1024 < 2
@@ -223,11 +227,11 @@ export default {
       }
       return isJPG && isLt2M
     },
-    //添加按钮（添加品牌|修改品牌）
+    // 添加按钮（添加品牌|修改品牌）
     addOrUpdateTradeMark() {
-      //当全部验证字段通过，再去书写业务逻辑
+      // 当全部验证字段通过，再去书写业务逻辑
       this.$refs.ruleForm.validate(async success => {
-        //如果全部字段符合条件
+        // 如果全部字段符合条件
         if (success) {
           this.dialogFormVisible = false
           //发请求（添加品牌|修改品牌）
@@ -235,13 +239,13 @@ export default {
             this.tmForm
           )
           if (result.code === 200) {
-            //弹出信息:添加品牌成功、修改品牌成功
+            // 弹出信息:添加品牌成功、修改品牌成功
             this.$message({
               type: 'success',
               message: this.tmForm.id ? '修改品牌成功' : '添加品牌成功'
             })
-            //添加或者修改品牌成功以后，需要再次获取品牌列表进行展示
-            //如果添加品牌： 停留在第一页，修改品牌应该留在当前页面
+            // 添加或者修改品牌成功以后，需要再次获取品牌列表进行展示
+            // 如果添加品牌： 停留在第一页，修改品牌应该留在当前页面
             this.getPageList(this.tmForm.id ? this.page : 1)
           }
         } else {
@@ -250,30 +254,30 @@ export default {
         }
       })
     },
-    //删除品牌的操作
+    // 删除品牌的操作
     deleteTradeMark(row) {
-      //弹框
+      // 弹框
       this.$confirm(`你确定删除${row.tmName}?`, '提示', {
         confirmButtonText: '确定',
         cancelButtonText: '取消',
         type: 'warning'
       })
         .then(async () => {
-          //当用户点击确定按钮的时候会出发
-          //向服务器发请求
+          // 当用户点击确定按钮的时候会出发
+          // 向服务器发请求
           let result = await this.$API.trademark.reqDeleteTradeMark(row.id)
-          //如果删除成功
+          // 如果删除成功
           if (result.code === 200) {
             this.$message({
               type: 'success',
               message: '删除成功!'
             })
-            //再次获取品牌列表数据
+            // 再次获取品牌列表数据
             this.getPageList(this.list.length > 1 ? this.page : this.page - 1)
           }
         })
         .catch(() => {
-          //当用户点击取消按钮的时候会触发
+          // 当用户点击取消按钮的时候会触发
           this.$message({
             type: 'info',
             message: '已取消删除'

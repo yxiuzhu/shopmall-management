@@ -1,10 +1,71 @@
 <template>
-  <div>Attr</div>
+  <div>
+    <el-card style="margin: 20px 0px">
+      <CategorySelect
+        @getCategoryId="getCategoryId"
+        :show="!isShowTable"
+      ></CategorySelect>
+    </el-card>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Attr'
+  name: 'Attr',
+  data() {
+    return {
+      category1Id: '',
+      category2Id: '',
+      category3Id: '',
+      //接受平台属性的数据
+      attrList: [],
+      //这个属性控制table表格显示与隐藏的
+      isShowTable: true,
+      //收集新增属性|修改属性使用的
+      attrInfo: {
+        attrName: '', //属性名
+        attrValueList: [
+          //属性值，因为属性值可以有多个因此用数组，每一个属性值都是一个对象需要attrId，valueName
+        ],
+        categoryId: 0, //三级分类的id
+        categoryLevel: 3 //因为服务器也需要区分几级id
+      }
+    }
+  },
+  methods: {
+    //自定义事件的回调
+    getCategoryId({ categoryId, level }) {
+      //区分三级分类相应的id，以及父组件进行存储
+      if (level == 1) {
+        this.category1Id = categoryId
+        this.category2Id = ''
+        this.category3Id = ''
+      } else if (level == 2) {
+        this.category2Id = categoryId
+        this.category3Id = ''
+      } else {
+        //代表三级分类的id有了
+        this.category3Id = categoryId
+        //发请求获取平台的属性数据
+        this.getAttrList()
+      }
+    },
+    //获取平台属性的数据
+    //当用户确定三级分类的数据时候，可以向服务器发请求获取平台属性进行展示
+    async getAttrList() {
+      //获取分类的ID
+      const { category1Id, category2Id, category3Id } = this
+      //获取属性列表的数据
+      let result = await this.$API.attr.reqAttrList(
+        category1Id,
+        category2Id,
+        category3Id
+      )
+      if (result.code === 200) {
+        this.attrList = result.data
+      }
+    }
+  }
 }
 </script>
 
