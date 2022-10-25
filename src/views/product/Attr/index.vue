@@ -261,6 +261,37 @@ export default {
         //获取相应的input表单元素实现聚焦
         this.$refs[index].focus()
       })
+    },
+    //气泡确认框确定按钮的回调
+    //最新版本的ElementUI----2.15.6，目前模板中的版本号2.13.x
+    deleteAttrValue(index) {
+      //当前删除属性值的操作是不需要发请求的
+      this.attrInfo.attrValueList.splice(index, 1)
+    },
+    //保存按钮：进行添加属性或者修改属性的操作
+    async addOrUpdateAttr() {
+      //整理参数:1,如果用户添加很多属性值，且属性值为空的不应该提交给服务器
+      //提交给服务器数据当中不应该出现flag字段
+      this.attrInfo.attrValueList = this.attrInfo.attrValueList.filter(item => {
+        //过滤掉属性值不是空的
+        if (item.valueName != '') {
+          //删除掉flag属性
+          delete item.flag
+          return true
+        }
+      })
+      try {
+        //发请求
+        await this.$API.attr.reqAddOrUpdateAttr(this.attrInfo)
+        //展示平台属性的信号量进行切换
+        this.isShowTable = true
+        //提示消失
+        this.$message({ type: 'success', message: '保存成功' })
+        //保存成功以后需要再次获取平台属性进行展示
+        this.getAttrList()
+      } catch (error) {
+        // this.$message('保存失败')
+      }
     }
   }
 }
