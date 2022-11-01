@@ -133,18 +133,18 @@ export default {
       dialogImageUrl: "",
       dialogVisible: false,
 
-      //spu属性初始化的时候是一个空的对象,在修改SPU的时候，会想服务器发请求，返回SPU信息（对象），在修改的时候可以利用服务器返回的这个对象收集最新的数据提交给服务器
-      //添加SPU，如果是添加SPU的时候并没有向服务器发请求，数据收集到哪里呀[SPU]，收集数据的时候有哪些字段呀，看文档
+      // spu属性初始化的时候是一个空的对象,在修改SPU的时候，会想服务器发请求，返回SPU信息（对象），在修改的时候可以利用服务器返回的这个对象收集最新的数据提交给服务器
+      // 添加SPU，如果是添加SPU的时候并没有向服务器发请求，数据收集到哪里呀[SPU]，收集数据的时候有哪些字段呀，看文档
       spu: {
-        //三级分类的id
+        // 三级分类的id
         category3Id: 0,
-        //描述
+        // 描述
         description: "",
-        //spu名称
+        // spu名称
         spuName: "",
-        //平台的id
+        // 平台的id
         tmId: "",
-        //收集SPU图片的信息
+        // 收集SPU图片的信息
         spuImageList: [
           // {
           //   id: 0,
@@ -153,7 +153,7 @@ export default {
           //   spuId: 0,
           // },
         ],
-        //平台属性与属性值收集
+        // 平台属性与属性值收集
         spuSaleAttrList: [
           // {
           //   baseSaleAttrId: 0,
@@ -173,33 +173,33 @@ export default {
           // },
         ],
       },
-      tradeMarkList: [], //存储品牌信息
-      spuImageList: [], //存储SPU图片的数据
-      saleAttrList: [], //销售属性的数据（项目全部的销售属性）
-      attrIdAndAttrName: "", //收集未选择的销售属性的id-----
+      tradeMarkList: [], // 存储品牌信息
+      spuImageList: [], // 存储SPU图片的数据
+      saleAttrList: [], // 销售属性的数据（项目全部的销售属性）
+      attrIdAndAttrName: "", // 收集未选择的销售属性的id-----
     };
   },
   methods: {
-    //照片墙删除某一个图片的时候会触发
+    // 照片墙删除某一个图片的时候会触发
     handleRemove(file, fileList) {
-      //file参数:代表的是删除的那个张图片
-      //fileList:照片墙删除某一张图片以后，剩余的其他的图片
+      // file参数:代表的是删除的那个张图片
+      // fileList:照片墙删除某一张图片以后，剩余的其他的图片
       // console.log(file, fileList,22222);
-      //收集照片墙图片的数据
-      //对于已有的图片【照片钱中显示的图片：有name、url字段的】，因为照片墙显示数据务必要有这两个属性
-      //对于服务器而言，不需要name、url字段，将来对于有的图片的数据在提交给服务器的时候，需要处理的
+      // 收集照片墙图片的数据
+      // 对于已有的图片【照片钱中显示的图片：有name、url字段的】，因为照片墙显示数据务必要有这两个属性
+      // 对于服务器而言，不需要name、url字段，将来对于有的图片的数据在提交给服务器的时候，需要处理的
       this.spuImageList = fileList;
     },
-    //照片墙图片预览的回调
+    // 照片墙图片预览的回调
     handlePictureCardPreview(file) {
-      //将图片地址赋值给这个属性
+      // 将图片地址赋值给这个属性
       this.dialogImageUrl = file.url;
-      //对话框显示
+      // 对话框显示
       this.dialogVisible = true;
     },
-    //初始化SpuForm数据
+    // 初始化SpuForm数据
     async initSpuData(spu) {
-      //获取SPU信息的数据
+      // 获取SPU信息的数据
       let spuResult = await this.$API.spu.reqSpu(spu.id);
       if (spuResult.code === 200) {
         //在修改spu的时候,需要向服务器发请求的，把服务器返回的数据（对象），赋值给spu属性
