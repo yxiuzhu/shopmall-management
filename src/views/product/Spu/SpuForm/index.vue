@@ -318,23 +318,23 @@ export default {
         this.saleAttrList = saleResult.data;
       }
     },
-    //取消按钮
+    // 取消按钮
     cancel() {
-      //取消按钮的回调，通知父亲切换场景为0
+      // 取消按钮的回调，通知父亲切换场景为0
       this.$emit("changeScene", { scene: 0, flag: "" });
-      //清理数据
-      //Object.assign:es6中新增的方法可以合并对象
-      //组件实例this._data,可以操作data当中响应式数据
-      //this.$options可以获取配置对象，配置对象的data函数执行，返回的响应式数据为空的
+      // 清理数据
+      // Object.assign:es6中新增的方法可以合并对象
+      // 组件实例this._data,可以操作data当中响应式数据
+      // this.$options可以获取配置对象，配置对象的data函数执行，返回的响应式数据为空的
       Object.assign(this._data, this.$options.data());
     },
   },
   computed: {
-    //计算出还未选择的销售属性
+    // 计算出还未选择的销售属性
     unSelectSaleAttr() {
-      //整个平台的销售属性一共三个：尺寸、颜色、版本 ----saleAttrList
-      //当前SPU拥有的属于自己的销售属性SPU.spuSaleAttrList  ----颜色
-      //数组的过滤方法，可以从已有的数组当中过滤出用户需要的元素，并未返回一个新的数据
+      // 整个平台的销售属性一共三个：尺寸、颜色、版本 ----saleAttrList
+      // 当前SPU拥有的属于自己的销售属性SPU.spuSaleAttrList  ----颜色
+      // 数组的过滤方法，可以从已有的数组当中过滤出用户需要的元素，并未返回一个新的数据
       let result = this.saleAttrList.filter((item) => {
         //every数组的方法，会返回一个布尔值【真，假的】
         return this.spu.spuSaleAttrList.every((item1) => {
