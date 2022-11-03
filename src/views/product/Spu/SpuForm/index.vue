@@ -192,6 +192,7 @@ export default {
     },
     // 照片墙图片预览的回调
     handlePictureCardPreview(file) {
+      console.log(file)
       // 将图片地址赋值给这个属性
       this.dialogImageUrl = file.url;
       // 对话框显示
@@ -263,13 +264,13 @@ export default {
       //解构出销售属性当中收集数据
       const { baseSaleAttrId, inputValue } = row;
       //新增的销售属性值的名称不能为空
-      if (inputValue.trim() == "") {
+      if (inputValue.trim() === "") {
         this.$message("属性值不能为空");
         return;
       }
       //属性值不能重复,这里也可以用some
       let result = row.spuSaleAttrValueList.every(
-        (item) => item.saleAttrValueName != inputValue
+        (item) => item.saleAttrValueName !== inputValue
       );
       if (!result) return;
       //新增的销售属性值
