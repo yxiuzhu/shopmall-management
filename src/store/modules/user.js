@@ -28,7 +28,7 @@ const mutations = {
 }
 
 const actions = {
-  // user login 
+  // user login
   async login({ commit }, userInfo) {
     // 对象解构： 得到用户名与密码
     const { username, password } = userInfo

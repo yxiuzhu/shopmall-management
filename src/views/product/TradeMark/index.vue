@@ -126,7 +126,7 @@ export default {
   data() {
     // 自定义校验规则
     var validateTmName = (rule, value, callback) => {
-      //自定义校验规则
+      // 自定义校验规则
       if (value.length < 2 || value.length > 10) {
         callback(new Error('品牌名称2-10位'))
       } else {
@@ -185,7 +185,7 @@ export default {
     },
     // 当分页器某一页需要展示数据条数发生变化的时候会触发
     handleSizeChange(limit) {
-      //整理参数
+      // 整理参数
       this.limit = limit
       this.getPageList()
     },
@@ -193,7 +193,7 @@ export default {
     showDialog() {
       // 显示对话框
       this.dialogFormVisible = true
-      //清除数据
+      // 清除数据
       this.tmForm = { tmName: '', logoUrl: '' }
     },
     // 修改某一个品牌
@@ -234,7 +234,7 @@ export default {
         // 如果全部字段符合条件
         if (success) {
           this.dialogFormVisible = false
-          //发请求（添加品牌|修改品牌）
+          // 发请求（添加品牌|修改品牌）
           let result = await this.$API.trademark.reqAddOrUpdateTradeMark(
             this.tmForm
           )

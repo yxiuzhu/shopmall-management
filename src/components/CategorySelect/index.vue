@@ -79,7 +79,7 @@ export default {
   methods: {
     // 获取一级分类数据的方法
     async getCategory1List() {
-      //获取一级分类的请求：不需要携带参数
+      // 获取一级分类的请求：不需要携带参数
       let result = await this.$API.attr.reqCategory1List()
       if (result.code === 200) {
         this.list1 = result.data || []
