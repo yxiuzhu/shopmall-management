@@ -210,6 +210,7 @@ export default {
     async save() {
       // 整理参数
       // 整理平台属性
+      console.log(this)
       const { attrInfoList, skuInfo, spuSaleAttrList, imageList } = this
       // 整理平台属的数据
       skuInfo.skuAttrValueList = attrInfoList.reduce((prev, item) => {
@@ -241,6 +242,8 @@ export default {
       if (result.code === 200) {
         this.$message({ type: 'success', message: '添加SKU成功' })
         this.$emit('changeScenes', 0)
+      } else {
+        this.$message.error('添加SKU失败，请联系管理员y_xiuzhu');
       }
     }
   }

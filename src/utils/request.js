@@ -48,7 +48,7 @@ service.interceptors.response.use(
     // if the custom code is not 20000, it is judged as an error.
     if (res.code !== 20000 && res.code !== 200) {
       Message({
-        message: res.message || 'Error',
+        message: res.message || '接口错误，请联系管理员y_xiuzhu@163.com',
         type: 'error',
         duration: 5 * 1000
       })
