@@ -3,7 +3,7 @@
 > 这是一个购物商城的管理后台。
 
 # 技术栈
-**Vue2.x + Element UI + axios + Eslint**，基于 `vue-cli` 进行构建。
+**Vue2.x + Element UI + Echarts + axios + Eslint**，基于 `vue-cli` 进行构建。
 
 <p align="center">
   <!-- <b>SPONSORED BY</b> -->
@@ -64,4 +64,7 @@ npm run lint -- --fix
 ## 后台数据接口文档
 http://39.98.123.211:8170/swagger-ui.html#/
 
-http://39.98.123.211:8510/swagger-ui.html
+http://39.98.123.211:8510/swagger-ui.html 
+
+## todo
+- Echarts的学习
