@@ -67,4 +67,4 @@ http://39.98.123.211:8170/swagger-ui.html#/
 http://39.98.123.211:8510/swagger-ui.html 
 
 ## todo
-- Echarts的学习
+- [x] Echarts的学习
