@@ -10,6 +10,7 @@ export default {
   name: "",
   mounted() {
     //初始化echarts实例
+    // TODO:init报错
     let lineCharts = echarts.init(this.$refs.charts);
     //配置数据
     lineCharts.setOption({
