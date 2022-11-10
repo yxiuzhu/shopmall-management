@@ -36,17 +36,17 @@
           <h3>门店{{ title }}排名</h3>
           <ul>
             <li>
-              <span class="rindex">0</span>
-              <span>肯德基</span>
-              <span class="rvalue">123456</span>
-            </li>
-            <li>
               <span class="rindex">1</span>
               <span>肯德基</span>
               <span class="rvalue">123456</span>
             </li>
             <li>
               <span class="rindex">2</span>
+              <span>肯德基</span>
+              <span class="rvalue">123456</span>
+            </li>
+            <li>
+              <span class="rindex">3</span>
               <span>肯德基</span>
               <span class="rvalue">123456</span>
             </li>
