@@ -154,7 +154,6 @@
           <!-- 第二个card -->
           <Detail title="访问量" count="88460">
              <template slot="charts">
-              444
                  <lineCharts></lineCharts>
              </template>
             <template slot="footer">
@@ -185,7 +184,7 @@
              </template>
             <template slot="footer">
               <span
-                >周同比&nbsp;&nbsp;56.67%
+                >周同比&nbsp;&nbsp;5.7%
                 <svg
                   t="1637478902688"
                   class="icon"
@@ -249,7 +248,7 @@
               ></span>
               &nbsp;&nbsp;
               <span
-                >日同比&nbsp;&nbsp;19.96% &nbsp;<svg
+                >日同比&nbsp;&nbsp;1.6% &nbsp;<svg
                   t="1637478988225"
                   class="icon"
                   viewBox="0 0 1024 1024"
