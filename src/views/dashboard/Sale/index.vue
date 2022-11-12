@@ -136,8 +136,6 @@ export default {
         }
       ]
     })
-
-    //顶部是mounted：为什么第一次没有数据，没有数据因此不显示
   },
   computed: {
     //计算属性-标题

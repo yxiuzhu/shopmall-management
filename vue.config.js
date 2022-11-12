@@ -44,7 +44,10 @@ module.exports = {
         target: 'http://gmall-h5-api.atguigu.cn',
         pathRewrite: { '^/dev-api': '' }
       }
-    }
+    },
+    // after: 在所有中间件执行之后，执行自定义函数
+    // 开启mock数据
+    after: require('./mock/mock-server.js')
   },
   configureWebpack: {
     // provide the app's title in webpack's name field, so that
