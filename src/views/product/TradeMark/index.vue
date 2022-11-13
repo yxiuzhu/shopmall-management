@@ -122,7 +122,7 @@
 
 <script>
 export default {
-  name: 'TradeMark',
+  name: 'tradeMark',
   data() {
     // 自定义校验规则
     var validateTmName = (rule, value, callback) => {
