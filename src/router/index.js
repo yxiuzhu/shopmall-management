@@ -143,7 +143,7 @@ export const asyncRoutes = [
     path: '/test',
     component: Layout,
     name: 'Test',
-    meta: { title: '测试管理', icon: 'el-icon-goods' },
+    meta: { title: '测试管理', icon: 'el-icon-s-check' },
     children: [
       {
         path: 'test1',
