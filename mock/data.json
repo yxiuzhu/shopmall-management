@@ -78,7 +78,7 @@
   ],
   "userFullYear": [110, 120, 90, 220, 175, 212, 192, 95, 88, 120, 250, 310],
 
-  "orderRank": [
+  "saleRank": [
     {
       "no": 1,
       "name": "肯德基",
@@ -116,7 +116,7 @@
     }
   ],
 
-  "userRank": [
+  "visiteRank": [
     {
       "no": 1,
       "name": "麦当劳",
@@ -367,7 +367,7 @@
     }
   ],
 
-  "saleRank": {
+  "saleMoney": {
     "online": {
       "name": [
         "家用电器",

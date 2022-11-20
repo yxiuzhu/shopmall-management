@@ -35,40 +35,10 @@
         <el-col :span="6" class="right">
           <h3>门店{{ title }}排名</h3>
           <ul>
-            <li>
-              <span class="rindex">1</span>
-              <span>肯德基</span>
-              <span class="rvalue">123456</span>
-            </li>
-            <li>
-              <span class="rindex">2</span>
-              <span>肯德基</span>
-              <span class="rvalue">123456</span>
-            </li>
-            <li>
-              <span class="rindex">3</span>
-              <span>肯德基</span>
-              <span class="rvalue">123456</span>
-            </li>
-            <li>
-              <span>4</span>
-              <span>肯德基</span>
-              <span class="rvalue">123456</span>
-            </li>
-            <li>
-              <span>5</span>
-              <span>肯德基</span>
-              <span class="rvalue">123456</span>
-            </li>
-            <li>
-              <span>6</span>
-              <span>肯德基</span>
-              <span class="rvalue">123456</span>
-            </li>
-            <li>
-              <span>7</span>
-              <span>肯德基</span>
-              <span class="rvalue">123456</span>
+            <li v-for="rankItem in rankState" :key="rankItem.no">
+              <span class="rindex">{{ rankItem.no }}</span>
+              <span>{{ rankItem.name }}</span>
+              <span class="rvalue">{{ rankItem.money }}</span>
             </li>
           </ul>
         </el-col>
@@ -144,13 +114,13 @@ export default {
       return this.activeName == 'sale' ? '销售额' : '访问量'
     },
     ...mapState({
-      listState: state => state.home.list
+      listState: state => state.home.list,
+      rankState: state => state.home.rank
     })
   },
   //监听属性
   watch: {
     title() {
-      console.log('修改配置数据')
       //重新修改图标的配置数据
       //图标配置数据可以再次修改，如果有新的数值，新的数值，没有新的数值，还是用以前的
       this.mycharts.setOption({
@@ -176,6 +146,8 @@ export default {
           }
         ]
       })
+      // 获取排行榜数据
+      this.$store.dispatch('getRank', this.activeName)
     },
     listState() {
       this.mycharts.setOption({

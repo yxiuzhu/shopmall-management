@@ -1,10 +1,14 @@
 import mockRequest from '@/utils/mockRequest'
 const state = {
-  list: {}
+  list: {},
+  rank: []
 }
 const mutations = {
   GETDATA(state, list) {
     state.list = list
+  },
+  GETRANK(state, rank) {
+    state.rank = rank
   }
 }
 const actions = {
@@ -13,6 +17,12 @@ const actions = {
     let result = await mockRequest.get('/home/list')
     if (result.code === 20000) {
       commit('GETDATA', result.data)
+    }
+  },
+  async getRank({ commit }, item) {
+    let result = await mockRequest.get(`/home/rank/${item}Rank`)
+    if (result.code === 20000) {
+      commit('GETRANK', result.data)
     }
   }
 }

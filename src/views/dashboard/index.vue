@@ -19,6 +19,8 @@ export default {
   },
   mounted() {
     this.$store.dispatch('getData')
+    // 获取排行榜数据
+    this.$store.dispatch('getRank', 'sale')
   }
 }
 </script>
